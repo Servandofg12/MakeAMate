@@ -5,7 +5,7 @@
 }
 
 #all{
-  background: linear-gradient(180deg, rgba(220,176,237,1) 0%, rgba(190,165,222,1) 50%, rgba(153,153,204,1) 100%);
+  background: linear-gradient(180deg, rgb(166, 164, 250) 0%, rgb(188, 174, 245) 50%, rgb(197, 160, 240) 100%);
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat-Bold";
@@ -61,11 +61,14 @@ h1, h2, h3, h4, h5, h6 {
        which tends to work better than using !important 
        (future you will thank you later)*/
     
-      background-color: rgba(210, 210, 210, 1);
-      opacity: .4;
+      background-color: rgb(240, 240, 240);
 }
 
 @media (max-width: 575px) {
+    .animacion {  
+        height: 10rem;
+        width: 10rem;     
+    }
   .border-top {
       border-top: 1px solid #e0e0e0;
   }
@@ -93,6 +96,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 576px) {
+    .animacion {  
+        height: 10rem;
+        width: 10rem;     
+    }
   .border-sm-top {
       border-top: 1px solid #e0e0e0;
   }
@@ -120,6 +127,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 768px) {
+    .animacion {  
+        height: 10rem;
+        width: 10rem;  
+    }
   .border-md-top {
       border-top: 1px solid #e0e0e0;
   }
@@ -147,6 +158,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 992px) {
+    .animacion {  
+        height: 10rem;
+        width: 10rem;     
+    }
   .border-lg-top {
       border-top: 1px solid #e0e0e0;
   }
@@ -174,6 +189,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 1200px) {
+    .animacion {  
+        height: 10rem;
+        width: 10rem; 
+    }
   .border-xl-top {
       border-top: 1px solid #e0e0e0;
   }
@@ -245,6 +264,82 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 12px;
 }
 
-.btn-light, .btn-light:active {
+.btn-light{
     background-color: rgba(153,153,204,1) !important;
+}
+
+.btn-light:hover {
+    background-color: rgb(128, 128, 203) !important;
+}
+
+/*animacion*/
+
+
+.animacion {  
+    display:none;
+    height: 22rem;
+    width: 22rem;
+    border-radius: 50%;
+    margin:auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1
+
+}
+
+.glass-effect {
+    background-color: #b000c010;
+    backdrop-filter: blur(12 px);
+    -webkit-backdrop-filter: blur(12 px);
+}
+
+.nombre-edad {
+    font-family: 'Roboto', sans-serif;
+}
+
+#tagsContainer {
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+img.alineadoTextoImagenCentro{
+    vertical-align: middle;
+}
+
+img.alineadoTextoImagenArriba{
+    vertical-align: top;
+}
+
+
+
+.info {
+    font: 150% nunito;
+    color:rgb(0, 0, 0);
+}
+
+.description {
+    font: 110% nunito;
+}
+
+.location {
+    font: 150% nunito;
+    color:rgb(131, 131, 131);
+}
+
+.infoPersonal p{
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.infoPersonal .genero{
+    justify-self: right;
+}
+
+.infoPersonal .edad{
+    justify-self: center;
 }

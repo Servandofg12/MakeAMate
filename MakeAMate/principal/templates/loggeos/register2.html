@@ -1,0 +1,664 @@
+{% block extrahead %}
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Register</title>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="icon" type="image/png" href="/static/images/favicon.ico"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+   
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+ 
+    <!-- Include the plugin's CSS and JS: -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.1/js/bootstrap-multiselect.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.1/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.1/css/bootstrap-multiselect.css" type="text/css"/>
+    
+    <style>
+* {
+    
+    margin: 0;
+    padding: 0
+}
+
+.errorlist{
+    list-style-type:none;
+    color:red;
+    font-size:20px;
+    margin:0;
+    padding:0;
+}
+
+
+p {
+    color: grey
+}
+
+
+
+
+
+#heading {
+    text-transform: uppercase;
+    color: #673AB7;
+    font-weight: normal
+    font-family: Nunito;
+}
+
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 20px
+}
+
+
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+    position: relative
+}
+
+.form-card {
+    text-align: left
+}
+
+#msform fieldset:not(:first-of-type) {
+    display: none
+}
+
+
+
+#msform input,
+#msform textarea {
+    padding: 8px 15px 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Nunito;
+    color: #2C3E50;
+    background-color: #ECEFF1;
+    font-size: 16px;
+    letter-spacing: 1px
+}
+
+#msform input:focus,
+#msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #673AB7;
+    outline-width: 0
+}
+
+#msform .action-button {
+    width: 100px;
+    background: #673AB7;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+    background-color: #311B92
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: 0.3rem;
+    visibility: hidden;
+}
+
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #616161;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px 10px 0px;
+    float: right
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+    background-color: #000000
+}
+
+.card {
+    z-index: 0;
+    border: none;
+    position: relative
+}
+
+.fs-title {
+    font-size: 25px;
+    color: #673AB7;
+    margin-bottom: 15px;
+    font-weight: normal;
+    text-align: left
+}
+
+.purple-text {
+    color: #673AB7;
+    font-weight: normal
+}
+
+.steps {
+    font-size: 25px;
+    color: gray;
+    margin-bottom: 10px;
+    font-weight: normal;
+    text-align: right
+}
+
+.fieldlabels {
+    color: gray;
+    text-align: left
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey
+}
+
+#progressbar .active {
+    color: #673AB7
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+#all{
+    background: linear-gradient(180deg, rgba(220,176,237,1) 0%, rgba(190,165,222,1) 50%, rgba(153,153,204,1) 100%);
+  }
+
+
+
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f13e"
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007"
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f030"
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #673AB7
+}
+
+.progress {
+    height: 20px
+}
+
+.progress-bar {
+    background-color: #673AB7
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+</style>
+</head>
+{% endblock %}
+
+{% block content %}
+<body  id = "all" oncontextmenu='return false' class='snippet-body'>
+
+<div  class="container-fluid">
+    <div  class="row justify-content-center">
+        <div  class="col-11 col-sm-9 col-md-7 col-lg-6ii col-xl-5 text-center p-0 mt-3 mb-2">
+            <div  class="card px-5 pt-4 pb-0 mt-3 mb-3">
+
+                <h2 id="heading">Registrate para ser usuario de MakeAMate</h2>
+                <form id="msform"  method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    <ul id="progressbar">
+                        <li class="active" id="account"  ><strong>Cuenta</strong></li>
+                        <li id="personal"  ><strong>Personal</strong></li>
+                        <li id="payment" ><strong>Imágenes</strong></li>
+                        <li id="confirm"  ><strong>Termina</strong></li>
+                    </ul>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> <br> 
+                    <fieldset>
+                        <div  class="form-card">
+                            <div class="row">
+                                <div class="col-5">
+                                    <h2 class="fs-title " style="font-family: Nunito" >Información de la cuenta:</h2>
+                                </div>
+                              
+                                <div class="col-5">
+                                    <h2 class="steps ">Pasos 1 - 4</h2>
+                                </div>
+                                <div>
+                                    {% if  form.errors.items %}
+                                        <span class = "errorlist"> 
+                                           Se han encontrado errores en el formulario, por favor, revise todos los campos.
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            </div> <label class="fieldlabels " style="font-family: Nunito"  >Email: * </label> <br>  <span class = "errorlist"> {{  form.correo.errors | striptags  }} </span>  {{  form.correo  }} <label class="fieldlabels">Usuario: *</label> <br>  <span class = "errorlist"> {{  form.username.errors | striptags  }} </span>  {{  form.username  }}  <label class="fieldlabels">Contraseña: *</label> <br>  <span class = "errorlist"> {{  form.password.errors | striptags  }} </span>  {{  form.password  }}  <label class="fieldlabels">Confirma contraseña: *</label>  <br>  <span class = "errorlist"> {{  form.password2.errors | striptags  }} </span> {{  form.password2  }} 
+
+                            <label class="fieldlabels" style="font-family: Nunito" >Teléfono: * (El prefijo predeterminado es +34)</label> <br>  <span class = "errorlist"> {{  form.telefono_usuario.errors | striptags  }} </span>  {{  form.telefono_usuario }} 
+
+                        </div><input type="button" style="font-family: Nunito"  name="next" id="next1" class="next action-button" value="Siguiente" />
+                        ¿Ya estas registrado? <a href="/login" class="text">Accede a tu cuenta </a>
+                    </fieldset>
+                    
+                     <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-5">
+                                    <h2 class="fs-title">Informacion Personal:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Pasos 2 - 4</h2>
+                                </div>
+                            </div> <label class="fieldlabels" style="font-family: Nunito">Nombre: *</label> <br>  <span class = "errorlist"> {{  form.nombre.errors | striptags  }} </span> {{  form.nombre  }}  <label class="fieldlabels" style="font-family: Nunito" >Apellidos: *</label>  <br>  <span class = "errorlist"> {{  form.apellidos.errors | striptags  }} </span> {{  form.apellidos  }} <div class="bootstrap-iso"> <label class="fieldlabels" style="font-family: Nunito">Fecha de Nacimiento: *(Formato: dd-mm-yyyy , ej 02-03-1998)</label>  
+                               <br>  <span class = "errorlist"> {{  form.fecha_nacimiento.errors | striptags  }} </span> {{  form.fecha_nacimiento  }} <label class="fieldlabels" style="font-family: Nunito">Ciudad donde estudias: *</label> </div> <br>  <span class = "errorlist"> {{  form.lugar.errors | striptags  }} </span>  {{  form.lugar  }}  
+                            <label class="fieldlabels" style="font-family: Nunito">Género: *</label>  <br>  <span class = "errorlist"> {{  form.genero.errors | striptags  }} </span>   {{  form.genero  }}
+                            <br>
+                            
+                            <label class="fieldlabels" style="font-family: Nunito">Elige al menos 3 Etiquetas que te definan *</label>    <br> {{  form.tags  }} <br><span class = "errorlist"> {{  form.tags.errors | striptags  }} </span> <br>
+                          
+                            <label class="fieldlabels" style="font-family: Nunito">Elige al menos 3 Aficiones que te definan *</label> <br> {{  form.aficiones  }}  <br>  <span class = "errorlist"> {{  form.aficiones.errors | striptags  }} </span> 
+                            <br>
+                        </div> <input type="button" name="next" id="next2" class="next action-button" style="font-family: Nunito" value="Siguiente" /> <input type="button" name="previous" style="font-family: Nunito" class="previous action-button-previous" value="Atras" />
+                    </fieldset>
+                   
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-5">
+                                    <h2 class="fs-title" style="font-family: Nunito">Ya queda menos !</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps" style="font-family: Nunito">Pasos 3 - 4</h2>
+                                </div>
+                            </div>  
+                            <label class="fieldlabels" style="font-family: Nunito">¿Tienes piso y buscas a alguien con quien compartirlo?</label>  <br>  <span class = "errorlist"> {{  form.piso_encontrado.errors | striptags  }} </span>  {{  form.piso_encontrado  }} 
+                            <div class = "zona_piso">
+                            <label class="fieldlabels" style="font-family: Nunito">Zona: *</label>  <br>  <span class = "errorlist"> {{  form.zona_piso.errors | striptags  }} </span>  {{  form.zona_piso  }}
+                         
+                        </div>
+                            <br>
+                            <label class="fieldlabels" style="font-family: Nunito">Adjunta foto de ti *</label> <br>  <span class = "errorlist"> {{  form.foto_usuario.errors | striptags  }} </span>  {{  form.foto_usuario  }}  
+                        </div> <input type="button" name="next" id="next3" class="next action-button" style="font-family: Nunito" value="Siguiente" /> <input type="button" name="previous" style="font-family: Nunito" class="previous action-button-previous" value="Atras" />
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-5">
+                                    <h2 class="fs-title" style="font-family: Nunito">Termina con:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps" style="font-family: Nunito">Paso 4 - 4</h2>
+                                </div>
+                            </div> <br><br>
+                            <div class="" style ="display:flex;flex-direction:row">
+                               
+                                <label for="id_checkbox" style="font-family: Nunito"> Acepto <a href="terminos" target="_blank" class="text">los terminos y condiciones de este sitio. </a> {{ form.terminos }} </label>
+
+                                
+                            </div>                         
+                        </div>
+                        <br>  <button type="submit" class="btn btn-outline-success" style="font-family: Nunito" value="Registrarme">Registrarme</button> <input type="button" style="font-family: Nunito" name="previous" class="previous action-button-previous" value="Atras" />
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}
+
+{% block extrabody %}
+    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+    <script type='text/javascript' src=''></script>
+   <script type='text/javascript' src=''></script>
+    <script type='text/Javascript'>$(document).ready(function(){
+
+    var current_fs, next_fs, previous_fs; //fieldsets
+    var opacity;
+    var current = 1;
+    var steps = $("fieldset").length;
+
+    setProgressBar(current);
+
+    $("#next1").click(function(){
+    valid1 = validar1();
+    if(valid1){
+    current_fs = $(this).parent();
+    next_fs = $(this).parent().next();
+
+    //Add Class Active
+    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+    //show the next fieldset
+    next_fs.show();
+    //hide the current fieldset with style
+    current_fs.animate({opacity: 0}, {
+    step: function(now) {
+    // for making fielset appear animation
+    opacity = 1 - now;
+
+    current_fs.css({
+    'display': 'none',
+    'position': 'relative'
+    });
+    next_fs.css({'opacity': opacity});
+    },
+    duration: 500
+    });
+    setProgressBar(++current);
+    }
+
+    
+    });
+
+    $("#next2").click(function(){
+    valid2 = validar2();
+    if(valid2){
+    current_fs = $(this).parent();
+    next_fs = $(this).parent().next();
+
+    //Add Class Active
+    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+    //show the next fieldset
+    next_fs.show();
+    //hide the current fieldset with style
+    current_fs.animate({opacity: 0}, {
+    step: function(now) {
+    // for making fielset appear animation
+    opacity = 1 - now;
+
+    current_fs.css({
+    'display': 'none',
+    'position': 'relative'
+    });
+    next_fs.css({'opacity': opacity});
+    },
+    duration: 500
+    });
+    setProgressBar(++current);
+    }
+
+    
+    });
+
+    $("#next3").click(function(){
+    valid3 = validar3();
+    if(valid3){
+    current_fs = $(this).parent();
+    next_fs = $(this).parent().next();
+
+    //Add Class Active
+    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+    //show the next fieldset
+    next_fs.show();
+    //hide the current fieldset with style
+    current_fs.animate({opacity: 0}, {
+    step: function(now) {
+    // for making fielset appear animation
+    opacity = 1 - now;
+
+    current_fs.css({
+    'display': 'none',
+    'position': 'relative'
+    });
+    next_fs.css({'opacity': opacity});
+    },
+    duration: 500
+    });
+    setProgressBar(++current);
+    }
+
+    
+    });
+
+
+    $(".previous").click(function(){
+
+    current_fs = $(this).parent();
+    previous_fs = $(this).parent().prev();
+
+    //Remove class active
+    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+    //show the previous fieldset
+    previous_fs.show();
+
+    //hide the current fieldset with style
+    current_fs.animate({opacity: 0}, {
+    step: function(now) {
+    // for making fielset appear animation
+    opacity = 1 - now;
+
+    current_fs.css({
+    'display': 'none',
+    'position': 'relative'
+    });
+    previous_fs.css({'opacity': opacity});
+    },
+    duration: 500
+    });
+    setProgressBar(--current);
+    });
+
+    function setProgressBar(curStep){
+    var percent = parseFloat(100 / steps) * curStep;
+    percent = percent.toFixed();
+    $(".progress-bar")
+    .css("width",percent+"%")
+    }
+
+    $(".submit").click(function(){
+    return false;
+    })
+
+    });
+    
+</script>
+
+
+<script>
+function validar1(){
+    var regexcorreo = /^([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+/;
+    var regex_no_prefijo = /^[0-9]{9}$/;
+    var regex_prefijo = /^\+[1-9]\d{1,14}$/; // E.164 Format
+    var alerta = ""
+    var correo = $("#id_correo").val();
+        if (correo==="" || correo===null) {
+            //alert("El correo no puede estar vacío");
+            //return false;
+            alerta += "El correo no puede estar vacío \n"
+        }else if(!(correo.match(regexcorreo))){
+            alerta += "Inserte un correo electrónico válido \n"
+
+        }
+        var username = $("#id_username").val();
+        if (username==="" || username===null) {
+            //alert("El usuario no puede estar vacío");
+            //return false;
+            alerta += "El usuario no puede estar vacío \n"
+        }
+        var regexgpass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        
+        var password = $("#id_password").val();
+        if (password==="" || password===null) {
+            alerta += "La contraseña no puede estar vacía \n"
+        }
+        var password2 = $("#id_password2").val();
+        if (password2==="" || password2===null) {
+            alerta += "La confirmación de la contraseña no puede estar vacía \n"
+        }else if(!(password.match(regexgpass))){
+            alerta += "La contraseña debe contener como mínimo 8 caracteres, entre ellos una letra y un número \n"
+        }else if(!(password2 === password)){
+            alerta += "La contraseña y su confirmación no coinciden \n"
+        }
+        var telefono = $("#id_telefono_usuario").val();
+        if (telefono==="" || telefono===null) {
+            alerta += "El teléfono no puede estar vacío \n"
+        }else if(!(telefono.match(regex_prefijo) || telefono.match(regex_no_prefijo))) {
+            alerta += "Inserte un teléfono válido"
+        }
+        
+        if(!(alerta === "")){
+            alert(alerta)
+            return false;
+        }
+    return true;
+}
+
+function validar2(){
+    var alerta = ""
+        var nombre = $("#id_nombre").val();
+        if (nombre==="" || nombre===null) {
+            alerta += "El nombre no puede estar vacío \n"
+        }
+        var apellidos = $("#id_apellidos").val();
+        if (apellidos==="" || apellidos===null) {
+            alerta += "Los apellidos no pueden estar vacíos \n"
+        }
+        var fecha_nacimiento = $("#id_fecha_nacimiento").val();
+        if (fecha_nacimiento==="" || fecha_nacimiento===null) {
+            alerta += "La fecha de nacimiento no puede estar vacía \n"
+        }
+        var lugar = $("#id_lugar").val();
+        if (lugar==="" || lugar===null) {
+            alerta += "La ciudad dónde estudias no puede estar vacía \n"
+        }
+        if(!(alerta === "")){
+            alert(alerta)
+            return false;
+        }
+    return true;
+}
+function validar3(){
+    var alerta = ""
+        var piso_encontrado = $("#id_piso_encontrado").val();
+        var zona_piso = $("#id_zona_piso").val();
+        if (piso_encontrado === "True" && (zona_piso==="" || zona_piso===null)) {
+            alerta += "La zona del piso no puede estar vacía si tienes un piso \n"
+        }
+        if(!(alerta === "")){
+            alert(alerta)
+            return false;
+        }
+      return true;
+    
+}
+
+</script>
+<script>
+function ocultarZona() {
+        if($('#id_piso_encontrado').val() === 'False') {
+            $('.zona_piso').hide();
+        } else {
+            $('.zona_piso').show();
+        }
+ }
+$('#id_piso_encontrado').on('change', ocultarZona);
+window.onload = ocultarZona;
+</script>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="fecha_nacimiento"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'dd-mm-yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.select_field_class').multiselect();
+
+    });
+</script>
+{% endblock %}
+
+

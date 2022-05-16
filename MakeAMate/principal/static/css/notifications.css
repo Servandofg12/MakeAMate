@@ -1,0 +1,114 @@
+  .dark-link {
+    color: #333;
+  }
+  
+  .heading-line {
+    position: relative;
+    padding-bottom: 5px;
+  }
+  
+  .heading-line:after {
+    content: "";
+    height: 4px;
+    width: 75px;
+    background-color: #29B6F6;
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
+  
+  
+  .notification-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    
+    background: #fff;
+    -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    flex-direction: row;
+    align-items: left;
+  }
+  
+  .notification-list--unread {
+    border-left: 2px solid #29B6F6;
+
+  }
+  
+
+  .notification-list_img{
+    left: 0px;
+    
+    
+  }
+  .notification-list .notification-list_img img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50px;
+    margin-right: 20px;
+    border: 2px rgb(136, 24, 158) solid;
+  }
+  .notification-list_detail{
+    flex-grow: 2;
+  }
+  
+  .notification-list .notification-list_content .notification-list_detail p {
+    margin-bottom: 5px;
+    line-height: 1.2;
+    
+   }
+   .me-3{
+     margin-top: auto;
+     margin-bottom: auto;
+
+    }
+   .bg-warning , .icon-circle {
+    margin: inherit;
+    float:right;
+    align-items: right;
+    }
+    
+  .notification-list .notification-list_feature-img img {
+    height: 48px;
+    width: 48px;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 14rem;
+
+    
+  }
+  
+  @media (max-width: 768px) {
+    .notification-list {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      padding: 2rem;
+      margin-bottom: 1rem;
+      
+      background: #fff;
+      -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: left;
+    }
+    .notification-list .notification-list_feature-img img {
+      height: 48px;
+      width: 48px;
+      border-radius: 5px;
+      margin-left: 0px;
+      margin-right: 10rem;
+  
+    }
+
+
+  }
