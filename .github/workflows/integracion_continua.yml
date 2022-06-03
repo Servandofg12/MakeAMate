@@ -54,6 +54,6 @@ jobs:
     - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "makeadalimate"
+          heroku_app_name: "meikameit2"
           heroku_email: "serfiggom@alum.us.es"
-    - run: heroku run -a makeadalimate sh -c "python MakeAMate/manage.py shell -c \"from django.contrib.auth.models import User; User.objects.filter(username='makeamate.ISPP2022') or User.objects.create_superuser('makeamate.ISPP2022', 'admin@example.com', 'makeamate.ISPP2022')\""
+    - run: heroku run -a meikameit2 sh -c "python MakeAMate/manage.py shell -c \"from django.contrib.auth.models import User; User.objects.filter(username='makeamate.ISPP2022') or User.objects.create_superuser('makeamate.ISPP2022', 'admin@example.com', 'makeamate.ISPP2022')\""
