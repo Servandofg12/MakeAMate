@@ -21,8 +21,6 @@ from chat.models import Chat,ChatRoom,LastConnection
 def paypal(request,pk):
     if not request.user.is_authenticated:
         return redirect("login")
-    elif Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect("registerSMS")
     else:
         loggeado=get_object_or_404(Usuario, usuario=request.user)
         premium=loggeado.es_premium()
@@ -37,8 +35,6 @@ def paypal(request,pk):
 def paymentComplete(request):
     if not request.user.is_authenticated:
         return redirect("/login")
-    elif Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect("registerSMS")
     else:
         loggeado=get_object_or_404(Usuario, usuario=request.user)
         premium=loggeado.es_premium()
@@ -53,8 +49,6 @@ def paymentComplete(request):
 def notificaciones_mates(request):
     if not request.user.is_authenticated:
         return redirect("/login")
-    elif Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect("registerSMS")
     lista_notificaciones=[]
     loggeado= request.user
     perfil=Usuario.objects.get(usuario=loggeado)
@@ -83,8 +77,6 @@ def notificaciones_mates(request):
 def notificaciones_chat(request):
     if not request.user.is_authenticated:
         return redirect("/login")
-    elif Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect("registerSMS")
     user = request.user
     notificaciones_chat=[]
     chats = ChatRoom.objects.filter(participants=user)
@@ -108,8 +100,6 @@ def notificaciones_chat(request):
 def notificaciones(request):
     if not request.user.is_authenticated:
         return redirect("/login")
-    elif Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect("registerSMS")
     notificaciones=notificaciones_mates(request)
     lista_chat=notificaciones_chat(request)
     notificaciones.extend(lista_chat)

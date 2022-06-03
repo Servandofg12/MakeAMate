@@ -46,8 +46,6 @@ def logout_view(request):
 @login_required(login_url="/login")
 def homepage(request):
     if request.user.is_authenticated:
-        if Usuario.objects.get(usuario = request.user).sms_validado == False:
-            return redirect(twilio)
         template = 'homepage.html'
 
         if Usuario.objects.get(usuario = request.user).piso_encontrado == True:
@@ -87,8 +85,6 @@ def homepage(request):
 def accept_mate(request):
     if not request.user.is_authenticated:
         return redirect(login_view)
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
     id_us = request.POST['id_us']
     usuario = get_object_or_404(User, pk=id_us)
     
@@ -122,8 +118,6 @@ def accept_mate(request):
 def reject_mate(request):
     if not request.user.is_authenticated:
         return redirect(login_view)
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
     id_us = request.POST['id_us']
     usuario = get_object_or_404(User, pk=id_us)  
     
@@ -147,8 +141,6 @@ def reject_mate(request):
 def payments(request):
     if not request.user.is_authenticated:
         return redirect(login_view) 
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
 
     template='payments2.html'
     loggeado=get_object_or_404(Usuario, usuario=request.user)
@@ -189,8 +181,6 @@ def privacidad(request):
 def notificaciones_mates(request):
     if not request.user.is_authenticated:
         return redirect(login_view) 
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
     lista_notificaciones=[]
     loggeado= request.user
     perfil=Usuario.objects.get(usuario=loggeado)
@@ -219,8 +209,6 @@ def notificaciones_mates(request):
 def notificaciones_chat(request):
     if not request.user.is_authenticated:
         return redirect(login_view) 
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
     user = request.user
     notificaciones_chat=[]
     chats = ChatRoom.objects.filter(participants=user)
@@ -244,8 +232,6 @@ def notificaciones_chat(request):
 def notificaciones(request):
     if not request.user.is_authenticated:
         return redirect(login_view) 
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
     notificaciones=notificaciones_mates(request)
     lista_chat=notificaciones_chat(request)
     notificaciones.extend(lista_chat)
@@ -255,8 +241,6 @@ def notificaciones(request):
 def notifications_list(request):
     if not request.user.is_authenticated:
         return redirect(login_view)
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
     template='notifications.html'
     notis=notificaciones(request)
     user = request.user
@@ -267,8 +251,6 @@ def notifications_list(request):
 def info(request):
     if not request.user.is_authenticated:
         return redirect(homepage)
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
     lista_mates=notificaciones(request)
     user = request.user
     usuario = Usuario.objects.get(usuario = user)
@@ -287,8 +269,6 @@ def error_500(request,*args, **argv):
 def estadisticas_mates(request):
     if not request.user.is_authenticated:
         return redirect(login_view)
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
     loggeado= request.user
     perfil=Usuario.objects.get(usuario=loggeado)
     es_premium= perfil.es_premium()
@@ -359,8 +339,6 @@ def estadisticas_mates(request):
 
 def registro(request):
     if request.user.is_authenticated:
-        if Usuario.objects.get(usuario = request.user).sms_validado == False:
-            return redirect(twilio)
         return redirect(homepage)
     form = UsuarioForm()
     if request.method == 'POST':
@@ -404,7 +382,7 @@ def registro(request):
             perfil.save()
             autenticado = authenticate(username=user, password=form_password)
             login(request, user)
-            return redirect('registerSMS/')
+            return redirect(homepage)
 
     return render(request, 'loggeos/register2.html', {'form': form})
 
@@ -503,8 +481,6 @@ def twilio(request):
 def profile_view(request):
     if not request.user.is_authenticated:
         return redirect(homepage)
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
     user = request.user
     usuario = Usuario.objects.get(usuario = user)
     lista_mates=notificaciones(request)
@@ -601,8 +577,6 @@ def profile_view(request):
 def detalles_perfil(request, profile_id):
     if not request.user.is_authenticated:
         return redirect(login_view)
-    if Usuario.objects.get(usuario = request.user).sms_validado == False:
-        return redirect(twilio)
 
     
     usuario_loggeado = get_object_or_404(Usuario, usuario=request.user)
