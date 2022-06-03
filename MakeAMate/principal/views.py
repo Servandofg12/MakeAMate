@@ -1,4 +1,4 @@
-from datetime import datetime,timedelta
+from datetime import datetime,timedelta  
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import get_object_or_404
